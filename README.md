@@ -37,7 +37,7 @@ livros_dti/
     npm install
     ```
 
-## Como Testar o Projeto
+## 🧪 Como Testar o Projeto
 1. **Executar o Jest:**
     ```sh
     npm test
@@ -64,14 +64,14 @@ Se quiser rodar dentro de um container Docker:
 1. **Instale o Docker** caso ainda não tenha
     - Baixe e instale em: [https://www.docker.com](https://www.docker.com)
 
-2. **Construir a imagem Docker:**
+2. **Executar o script:**
     ```sh
-    docker build -t livros_dti .
+    npm run docker
     ```
-
-3. **Rodar o container:**
+3. **Caso tenha problema de permissão, execute os comandos com sudo na frente:**
     ```sh
-    docker run -it --rm livros_dti
+    sudo docker build -t meu-app-livros . 
+    sudo docker run -it --rm meu-app-livros
     ```
 
 ## 📜 Licença
