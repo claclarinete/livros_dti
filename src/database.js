@@ -1,25 +1,25 @@
-const sqlite3 = require('sqlite3').verbose();
+const sqlite3 = require('sqlite3').verbose(); // Importa o módulo sqlite3 e ativa o modo verbose, que fornece logs mais detalhados sobre o funcionamento do banco de dados.
 
-const db = new sqlite3.Database('./livros.db', (err) => {
+const db = new sqlite3.Database('./livros.db', (err) => { // Cria uma nova instância do banco de dados, especificando o caminho para o arquivo "livros.db".
     if (err) {
-        console.error('Erro ao conectar ao banco de dados', err.message);
+        console.error('Erro ao conectar ao banco de dados', err.message); // Se houver um erro na conexão, exibe uma mensagem de erro.
     }
 });
 
-// Criando a tabela de livros se não existir
+// Cria a tabela de livros se não existir
 db.run(`CREATE TABLE IF NOT EXISTS livros (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    titulo TEXT NOT NULL,
-    autor TEXT NOT NULL,
-    ano_publicacao INTEGER NOT NULL,
-    genero TEXT,
-    paginas INTEGER NOT NULL,
-    data_cadastro TEXT DEFAULT CURRENT_TIMESTAMP,
-    avaliacao FLOAT)`,
+    id INTEGER PRIMARY KEY AUTOINCREMENT, // Define a coluna "id" como chave primária e auto-incrementada.
+    titulo TEXT NOT NULL, // Define a coluna "titulo" como tipo texto e obrigatória.
+    autor TEXT NOT NULL, // Define a coluna "autor" como tipo texto e obrigatória.
+    ano_publicacao INTEGER NOT NULL, // Define a coluna "ano_publicacao" como tipo inteiro e obrigatória.
+    genero TEXT, // Define a coluna "genero" como tipo texto (opcional).
+    paginas INTEGER NOT NULL, // Define a coluna "paginas" como tipo inteiro e obrigatória.
+    data_cadastro TEXT DEFAULT CURRENT_TIMESTAMP, // Define a coluna "data_cadastro" como tipo texto, com valor padrão sendo o timestamp atual.
+    avaliacao FLOAT)`, // Define a coluna "avaliacao" como tipo float (opcional).
     (err) => {
         if (err) {
-            console.error('Erro ao criar a tabela', err.message);
+            console.error('Erro ao criar a tabela', err.message); // Caso ocorra um erro na criação da tabela, exibe uma mensagem de erro.
         }
     });
 
-module.exports = db;
+module.exports = db; // Exporta o objeto de banco de dados para que possa ser utilizado em outros arquivos.
