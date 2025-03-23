@@ -5,7 +5,7 @@
   "scripts": {
     "test": "jest",
     "start": "node src/cli.js",
-    "docker": "docker build -t meu-app-livros . && docker run -it --rm meu-app-livros"
+    "docker": "docker build -t livros_dti . && docker run -it --rm livros_dti"
   },
   "keywords": [],
   "author": "",
