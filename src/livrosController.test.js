@@ -35,6 +35,27 @@ describe('livrosController', () => {
         await expect(livrosController.getById(1)).rejects.toThrow('Erro ao buscar');
     });
 
+    test('getByAuthor - deve retornar uma lista de livros pelo autor', async () => {
+        const mockLivros = [
+            { id: 1, titulo: 'Livro 1', autor: 'Autor 1' },
+            { id: 2, titulo: 'Livro 2', autor: 'Autor 2' },
+            { id: 3, titulo: 'Livro 3', autor: 'Autor 1' }
+        ];
+        db.all.mockImplementation((query, params, callback) => {
+            const livrosFiltrados = mockLivros.filter(livro => livro.autor === params[0]);
+            callback(null, livrosFiltrados);
+        });
+        await expect(livrosController.getByAuthor('Autor 1')).resolves.toEqual([
+            { id: 1, titulo: 'Livro 1', autor: 'Autor 1' },
+            { id: 3, titulo: 'Livro 3', autor: 'Autor 1' }
+        ]);
+    });
+
+    test('getByAuthor - deve rejeitar caso ocorra um erro', async () => {
+        db.all.mockImplementation((query, params, callback) => callback(new Error('Erro ao buscar')));
+        await expect(livrosController.getAll()).rejects.toThrow('Erro ao buscar');
+    });
+
     test('getAll - deve retornar a lista de livros', async () => {
         const mockLivros = [
             { id: 1, titulo: 'Livro 1', autor: 'Autor 1' },
