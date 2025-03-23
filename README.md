@@ -23,14 +23,15 @@ Ao executar esse projeto, um menu será exibido no terminal indicando, de maneir
 ```
 livros_dti/
 │── src/
-│   ├── database.js         # Configuração do banco de dados SQLite
-│   ├── cli.js              # Interface de linha de comando (menu interativo)
-│   ├── livrosController.js # Funções CRUD para manipulação dos livros
-|── .dockerignore           # Arquivos a serem ignorados pelo Docker
-│── .gitignore              # Arquivos a serem ignorados pelo Git(ex: banco SQLite)
-│── package-lock.json       # Pacotes instalados ao rodar "npm install"
-│── package.json            # Dependências do projeto
-│── README.md               # Documentação do projeto
+│   ├── cli.js                      # Interface de linha de comando (menu interativo)
+│   ├── database.js                 # Configuração do banco de dados SQLite
+│   ├── livrosController.js         # Funções CRUD para manipulação dos livros
+│   ├── livrosController.test.js    # Testes unitários das funções CRUD
+|── .dockerignore                   # Arquivos a serem ignorados pelo Docker
+│── .gitignore                      # Arquivos a serem ignorados pelo Git(ex: banco SQLite)
+│── package-lock.json               # Pacotes instalados ao rodar "npm install"
+│── package.json                    # Dependências do projeto
+│── README.md                       # Documentação do projeto
 
 ```
 
