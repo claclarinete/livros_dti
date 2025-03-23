@@ -56,8 +56,8 @@ function menu() {
 
                                         // Se todas as verificações passarem, chama a função `create`
                                         create(titulo, autor, parseInt(ano), genero, parseInt(paginas), parseFloat(avaliacao))
-                                            .then(() => console.log('Livro adicionado com sucesso!'))
-                                            .catch((err) => console.error('Erro ao adicionar livro:', err))
+                                            .then(() => console.log('\nLivro adicionado com sucesso!'))
+                                            .catch((err) => console.error('\nErro ao adicionar livro:', err))
                                             .finally(() => menu());
                                     });
                                 });
@@ -127,8 +127,8 @@ function menu() {
 
                                                 // Atualizar o livro no banco de dados
                                                 update(parseInt(id), titulo, autor, parseInt(ano), genero, parseInt(paginas), parseFloat(avaliacao))
-                                                    .then(() => console.log('Livro atualizado com sucesso!'))
-                                                    .catch((err) => console.error('Erro ao atualizar livro:', err))
+                                                    .then(() => console.log('\nLivro atualizado com sucesso!'))
+                                                    .catch((err) => console.error('\nErro ao atualizar livro:', err))
                                                     .finally(() => menu());
                                             });
                                         });
@@ -137,7 +137,7 @@ function menu() {
                             });
                         });
                     } catch (err) {
-                        console.error('Erro ao verificar livro:', err);
+                        console.error('\nErro ao verificar livro:', err);
                         menu();
                     }
                 });
@@ -161,11 +161,11 @@ function menu() {
 
                         // Caso o livro exista, remover o livro
                         remove(parseInt(id))
-                            .then(() => console.log('Livro removido com sucesso!'))
-                            .catch((err) => console.error('Erro ao remover livro:', err))
+                            .then(() => console.log('\nLivro removido com sucesso!'))
+                            .catch((err) => console.error('\nErro ao remover livro:', err))
                             .finally(() => menu());
                     } catch (err) {
-                        console.error('Erro ao verificar livro:', err);
+                        console.error('\nErro ao verificar livro:', err);
                         menu();
                     }
                 });
