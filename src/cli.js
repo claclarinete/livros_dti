@@ -1,4 +1,5 @@
 const readline = require('readline'); // Importa o módulo readline para interação com o usuário via terminal.
+const chalk = require('chalk'); //Importa o módulo chalk para alterar as cores do output.
 const { create, getById, getByAuthor, getAll, update, remove } = require('./livrosController'); // Desestruturação para importar funções de um controller que manipula livros.
 
 const rl = readline.createInterface({ // Cria uma interface de leitura com o terminal.
@@ -8,7 +9,7 @@ const rl = readline.createInterface({ // Cria uma interface de leitura com o ter
 
 function menu() { // Função que exibe o menu principal de opções para o usuário.
 
-    console.log('\n--- Gerenciador de Livros ---'); // Exibe o título do menu e as opções.
+    console.log(chalk.bold('\n--- Gerenciador de Livros ---')); // Exibe o título do menu e as opções.
     console.log('1. Listar livros'); 
     console.log('2. Adicionar livro'); 
     console.log('3. Buscar livro por ID'); 
@@ -36,30 +37,30 @@ function menu() { // Função que exibe o menu principal de opções para o usu�
                                         // Valida as entradas do usuário.
                                         const ano_atual = new Date().getFullYear();
                                         if (!titulo || typeof titulo !== 'string') {
-                                            console.error("\nTítulo inválido");
+                                            console.error(chalk.red.bold('\nTítulo inválido!'));
                                             return menu();
                                         }
                                         if (!autor || typeof autor !== 'string') {
-                                            console.error("\nAutor inválido");
+                                            console.error(chalk.red.bold('\nAutor inválido!'));
                                             return menu();
                                         }
                                         if (!ano || isNaN(ano) || ano < 0 || ano > ano_atual) {
-                                            console.error("\nAno de publicação inválido");
+                                            console.error(chalk.red.bold('\nAno de publicação inválido!'));
                                             return menu();
                                         }
                                         if (!paginas || isNaN(paginas) || paginas <= 0) {
-                                            console.error("\nNúmero de páginas inválido");
+                                            console.error(chalk.red.bold('\nNúmero de páginas inválido!'));
                                             return menu();
                                         }
                                         if (avaliacao !== undefined && (isNaN(avaliacao) || avaliacao < 0.0 || avaliacao > 5.0)) {
-                                            console.error("\nAvaliação deve estar entre 0.0 e 5.0");
+                                            console.error(chalk.red.bold('\nAvaliação deve estar entre 0.0 e 5.0!'));
                                             return menu();
                                         }
 
                                         // Se todas as validações passarem, chama a função `create` para adicionar o livro ao banco de dados.
                                         create(titulo, autor, parseInt(ano), genero, parseInt(paginas), parseFloat(avaliacao))
-                                            .then(() => console.log('\nLivro adicionado com sucesso!'))
-                                            .catch((err) => console.error('\nErro ao adicionar livro:', err))
+                                            .then(() => console.log(chalk.green.bold('\nLivro adicionado com sucesso!')))
+                                            .catch((err) => console.error(chalk.red.bold('\nErro ao adicionar livro:', err)))
                                             .finally(() => menu()); // Chama o menu novamente após a operação.
                                     });
                                 });
@@ -75,35 +76,35 @@ function menu() { // Função que exibe o menu principal de opções para o usu�
                     if (livro) {
                         console.table(livro); // Exibe o livro encontrado.
                     } else {
-                        console.error('\nLivro não encontrado.'); // Caso o livro não seja encontrado, exibe erro.
+                        console.error(chalk.red.bold('\nLivro não encontrado.')); // Caso o livro não seja encontrado, exibe erro.
                     }
                     menu(); // Chama o menu novamente após a operação.
                 });
                 break;
-            
+
             case '4': // Caso 4: Buscar livro por autor.
-                rl.question('Digite o autor desejado: ', async(autor) => { // Pergunta o autor.
+                rl.question('Digite o autor desejado: ', async (autor) => { // Pergunta o autor.
                     const livros = await getByAuthor(autor); // Chama a função `getByAuthor` para buscar os livros pelo autor.
                     if (livros) {
                         console.table(livros); // Exibe os livros encontrados.
                     } else {
-                        console.error('\nNenhum livro encontrado.'); // Caso nenhum livro seja encontrado, exibe erro.
+                        console.error(chalk.red.bold('\nNenhum livro encontrado.')); // Caso nenhum livro seja encontrado, exibe erro.
                     }
                     menu(); // Chama o menu novamente após a operação.
                 });
                 break;
-            
+
             case '5': // Caso 5: Atualizar livro.
                 rl.question('Digite o ID do livro a ser atualizado: ', async (id) => { // Pergunta o ID do livro a ser atualizado.
                     if (isNaN(id) || parseInt(id) <= 0) {
-                        console.error("\nID inválido");
+                        console.error(chalk.red.bold("\nID inválido"));
                         return menu(); // Valida o ID.
                     }
 
                     try {
                         const livro = await getById(parseInt(id)); // Busca o livro pelo ID.
                         if (!livro) {
-                            console.error("\nLivro não encontrado");
+                            console.error(chalk.red.bold("\nLivro não encontrado"));
                             return menu(); // Caso o livro não seja encontrado, exibe erro.
                         }
 
@@ -115,33 +116,33 @@ function menu() { // Função que exibe o menu principal de opções para o usu�
                                         rl.question('Novo número de páginas: ', (paginas) => {
                                             rl.question('Nova avaliação (0.0 - 5.0): ', (avaliacao) => {
 
-                                                // Valida os dados fornecidos pelo usuário.
+                                                // Valida as entradas do usuário.
                                                 const ano_atual = new Date().getFullYear();
                                                 if (!titulo || typeof titulo !== 'string') {
-                                                    console.error("\nTítulo inválido");
+                                                    console.error(chalk.red.bold('\nTítulo inválido!'));
                                                     return menu();
                                                 }
                                                 if (!autor || typeof autor !== 'string') {
-                                                    console.error("\nAutor inválido");
+                                                    console.error(chalk.red.bold('\nAutor inválido!'));
                                                     return menu();
                                                 }
                                                 if (!ano || isNaN(ano) || ano < 0 || ano > ano_atual) {
-                                                    console.error("\nAno de publicação inválido");
+                                                    console.error(chalk.red.bold('\nAno de publicação inválido!'));
                                                     return menu();
                                                 }
                                                 if (!paginas || isNaN(paginas) || paginas <= 0) {
-                                                    console.error("\nNúmero de páginas inválido");
+                                                    console.error(chalk.red.bold('\nNúmero de páginas inválido!'));
                                                     return menu();
                                                 }
                                                 if (avaliacao !== undefined && (isNaN(avaliacao) || avaliacao < 0.0 || avaliacao > 5.0)) {
-                                                    console.error("\nAvaliação deve estar entre 0.0 e 5.0");
+                                                    console.error(chalk.red.bold('\nAvaliação deve estar entre 0.0 e 5.0!'));
                                                     return menu();
                                                 }
 
                                                 // Atualiza o livro no banco de dados.
                                                 update(parseInt(id), titulo, autor, parseInt(ano), genero, parseInt(paginas), parseFloat(avaliacao))
-                                                    .then(() => console.log('\nLivro atualizado com sucesso!'))
-                                                    .catch((err) => console.error('\nErro ao atualizar livro:', err))
+                                                    .then(() => console.log(chalk.green.bold('\nLivro atualizado com sucesso!')))
+                                                    .catch((err) => console.error(chalk.red.bold('\nErro ao atualizar livro:', err)))
                                                     .finally(() => menu()); // Chama o menu novamente após a operação.
                                             });
                                         });
@@ -150,7 +151,7 @@ function menu() { // Função que exibe o menu principal de opções para o usu�
                             });
                         });
                     } catch (err) {
-                        console.error('\nErro ao verificar livro:', err); // Caso haja erro na busca do livro, exibe erro.
+                        console.error(chalk.red.bold('\nErro ao verificar livro:', err)); // Caso haja erro na busca do livro, exibe erro.
                         menu(); // Chama o menu novamente após o erro.
                     }
                 });
@@ -159,24 +160,24 @@ function menu() { // Função que exibe o menu principal de opções para o usu�
             case '6': // Caso 6: Deletar livro.
                 rl.question('Digite o ID do livro a ser deletado: ', async (id) => { // Pergunta o ID do livro a ser deletado.
                     if (isNaN(id) || parseInt(id) <= 0) {
-                        console.error("\nID inválido");
+                        console.error(chalk.red.bold("\nID inválido"));
                         return menu(); // Valida o ID.
                     }
 
                     try {
                         const livro = await getById(parseInt(id)); // Verifica se o livro existe.
                         if (!livro) {
-                            console.error("\nLivro não encontrado");
+                            console.error(chalk.red.bold("\nLivro não encontrado"));
                             return menu(); // Caso o livro não seja encontrado, exibe erro.
                         }
 
                         // Deleta o livro do banco de dados.
                         remove(parseInt(id))
-                            .then(() => console.log('\nLivro removido com sucesso!'))
-                            .catch((err) => console.error('\nErro ao remover livro:', err))
+                            .then(() => console.log(chalk.green.bold('\nLivro removido com sucesso!')))
+                            .catch((err) => console.error(chalk.red.bold('\nErro ao remover livro:', err)))
                             .finally(() => menu()); // Chama o menu novamente após a operação.
                     } catch (err) {
-                        console.error('\nErro ao verificar livro:', err); // Caso ocorra um erro ao verificar o livro, exibe erro.
+                        console.error(chalk.red.bold('\nErro ao verificar livro:', err)); // Caso ocorra um erro ao verificar o livro, exibe erro.
                         menu(); // Chama o menu novamente após o erro.
                     }
                 });
@@ -187,7 +188,7 @@ function menu() { // Função que exibe o menu principal de opções para o usu�
                 break;
 
             default: // Caso a opção fornecida seja inválida.
-                console.log('\nOpção inválida!');
+                console.log(chalk.red.bold('\nOpção inválida!'));
                 menu(); // Chama o menu novamente após um erro.
         }
     });
