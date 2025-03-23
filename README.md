@@ -37,7 +37,7 @@ livros_dti/
 ## 📥 Instalação
 1. **Instale o Node.js** caso ainda não tenha.
     - Baixe e instale em: [https://nodejs.org/](https://nodejs.org/)
-    
+
 2. **Instale o SQLite** caso ainda não tenha.
     - Baixe e instale em: [https://www.sqlite.org/download.html](https://www.sqlite.org/download.html)
 
@@ -75,8 +75,8 @@ Se quiser rodar dentro de um container Docker:
     ```
 3. **Caso tenha problema de permissão, execute os comandos com sudo na frente:**
     ```sh
-    sudo docker build -t meu-app-livros . 
-    sudo docker run -it --rm meu-app-livros
+    sudo docker build -t livros_dti . 
+    sudo docker run -it --rm livros_dti
     ```
 
 ## 📜 Licença
