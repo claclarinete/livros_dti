@@ -12,5 +12,8 @@
     "readline-sync": "^1.4.10",
     "sqlite3": "^5.1.7"
   },
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
 }
