@@ -1,6 +1,15 @@
 # 📚 Gerenciador de Livros
 
-Este projeto é uma aplicação de linha de comando (CLI) para gerenciar livros usando **Node.js** e **SQLite**.
+Este projeto é uma aplicação de linha de comando (CLI) para gerenciar livros usando **Node.js** e **SQLite**. Cada livro tem título, autor, ano de publicação, gênero, páginas e nota de avaliação.
+
+## 📌 Funcionalidades
+✅ **Listar livros** do banco de dados  
+✅ **Adicionar um novo livro** com título, autor, ano, gênero, páginas e avaliação  
+✅ **Buscar livro por ID** e exibir detalhes  
+✅ **Atualizar um livro existente**  
+✅ **Remover um livro** com base no ID  
+✅ **Validações** para evitar entradas inválidas  
+✅ **Testes unitários** para verificar o funcionamento de cada função
 
 ## 🚀 Tecnologias Utilizadas
 - Node.js
@@ -27,12 +36,14 @@ livros_dti/
 ## 📥 Instalação
 1. **Instale o Node.js** caso ainda não tenha.
     - Baixe e instale em: [https://nodejs.org/](https://nodejs.org/)
-2. **Clone este repositório** (ou crie uma pasta para o projeto):
+2. **Instale o SQLite** caso ainda não tenha.
+    - Baixe e instale em: [https://www.sqlite.org/download.html](https://www.sqlite.org/download.html)
+3. **Clone este repositório** (ou crie uma pasta para o projeto):
     ```sh
     git clone https://github.com/seu-usuario/seu-repositorio.git
     cd seu-repositorio
     ```
-3. **Instale as dependências:**
+4. **Instale as dependências:**
     ```sh
     npm install
     ```
@@ -48,15 +59,6 @@ livros_dti/
     ```sh
     npm start
     ````
-
-## 📌 Funcionalidades
-✅ **Listar livros** do banco de dados  
-✅ **Adicionar um novo livro** com título, autor, ano, gênero, páginas e avaliação  
-✅ **Buscar livro por ID** e exibir detalhes  
-✅ **Atualizar um livro existente**  
-✅ **Remover um livro** com base no ID  
-✅ **Validações** para evitar entradas inválidas  
-✅ **Testes unitários** para verificar o funcionamento de cada função
 
 ## 🐳 Rodando com Docker (Opcional)
 Se quiser rodar dentro de um container Docker:
