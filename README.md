@@ -4,6 +4,7 @@ Este projeto é uma aplicação de linha de comando (CLI) para gerenciar livros 
 
 ## 📌 Funcionalidades
 Ao executar esse projeto, um menu será exibido no terminal indicando, de maneira intuitiva, quais funcionalidades podem ser executadas, sendo elas:
+
 ✅ **Listar livros** do banco de dados  
 ✅ **Adicionar um novo livro** com título, autor, ano, gênero, páginas e avaliação  
 ✅ **Buscar livro por ID** e exibir detalhes  
