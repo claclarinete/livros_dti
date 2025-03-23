@@ -37,8 +37,10 @@ livros_dti/
 ## 📥 Instalação
 1. **Instale o Node.js** caso ainda não tenha.
     - Baixe e instale em: [https://nodejs.org/](https://nodejs.org/)
+    
 2. **Instale o SQLite** caso ainda não tenha.
     - Baixe e instale em: [https://www.sqlite.org/download.html](https://www.sqlite.org/download.html)
+
 3. **Clone este repositório** (ou crie uma pasta para o projeto):
     ```sh
     git clone https://github.com/seu-usuario/seu-repositorio.git
