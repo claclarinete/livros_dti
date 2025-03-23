@@ -27,6 +27,18 @@ async function getById(id) {
     });
 }
 
+async function getByAuthor(autor) {
+    return new Promise((resolve, reject) => {
+        db.all('SELECT * FROM livros WHERE autor = ?', [autor], (err, rows) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(rows);
+            }
+        });
+    });
+}
+
 async function getAll() {
     return new Promise((resolve, reject) => {
         db.all('SELECT * FROM livros', [], (err, rows) => {
@@ -68,4 +80,4 @@ async function remove(id) {
     });
 }
 
-module.exports = { create, getById, getAll, update, remove };
+module.exports = { create, getById, getByAuthor, getAll, update, remove };

@@ -1,5 +1,5 @@
 const readline = require('readline');
-const { create, getById, getAll, update, remove } = require('./livrosController');
+const { create, getById, getByAuthor, getAll, update, remove } = require('./livrosController');
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -12,9 +12,10 @@ function menu() {
     console.log('1. Listar livros');
     console.log('2. Adicionar livro');
     console.log('3. Buscar livro por ID');
-    console.log('4. Atualizar livro');
-    console.log('5. Deletar livro');
-    console.log('6. Sair');
+    console.log('4. Buscar livro por autor');
+    console.log('5. Atualizar livro');
+    console.log('6. Deletar livro');
+    console.log('7. Sair');
 
     rl.question('Escolha uma opção: ', async (opcao) => {
         switch (opcao) {
@@ -78,8 +79,20 @@ function menu() {
                     menu();
                 });
                 break;
-
+            
             case '4':
+                rl.question('Digite o autor desejado: ', async(autor) => {
+                    const livros = await getByAuthor(autor);
+                    if (livros) {
+                        console.table(livros);
+                    } else {
+                        console.error('\nNenhum livro encontrado.');
+                    }
+                    menu();
+                });
+                break;
+            
+            case '5':
                 rl.question('Digite o ID do livro a ser atualizado: ', async (id) => {
                     // Verifica se o ID é válido
                     if (isNaN(id) || parseInt(id) <= 0) {
@@ -143,7 +156,7 @@ function menu() {
                 });
                 break;
 
-            case '5':
+            case '6':
                 rl.question('Digite o ID do livro a ser deletado: ', async (id) => {
                     // Verifica se o ID é válido
                     if (isNaN(id) || parseInt(id) <= 0) {
@@ -171,7 +184,7 @@ function menu() {
                 });
                 break;
 
-            case '6':
+            case '7':
                 rl.close();
                 break;
 

@@ -6,6 +6,7 @@ Este projeto é uma aplicação de linha de comando (CLI) para gerenciar livros 
 ✅ **Listar livros** do banco de dados  
 ✅ **Adicionar um novo livro** com título, autor, ano, gênero, páginas e avaliação  
 ✅ **Buscar livro por ID** e exibir detalhes  
+✅ **Buscar livros por autor** e exibir detalhes  
 ✅ **Atualizar um livro existente**  
 ✅ **Remover um livro** com base no ID  
 ✅ **Validações** para evitar entradas inválidas  
