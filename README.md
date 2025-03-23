@@ -29,6 +29,7 @@ livros_dti/
 │   ├── livrosController.test.js    # Testes unitários das funções CRUD
 |── .dockerignore                   # Arquivos a serem ignorados pelo Docker
 │── .gitignore                      # Arquivos a serem ignorados pelo Git(ex: banco SQLite)
+│── dockerfile                      # Arquivos com as configurações para execução do docker
 │── package-lock.json               # Pacotes instalados ao rodar "npm install"
 │── package.json                    # Dependências do projeto
 │── README.md                       # Documentação do projeto
