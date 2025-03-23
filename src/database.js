@@ -8,13 +8,12 @@ const db = new sqlite3.Database('./livros.db', (err) => { // Cria uma nova inst�
 
 // Cria a tabela de livros se não existir
 db.run(`CREATE TABLE IF NOT EXISTS livros (
-    id INTEGER PRIMARY KEY AUTOINCREMENT, // Define a coluna "id" como chave primária e auto-incrementada.
-    titulo TEXT NOT NULL, // Define a coluna "titulo" como tipo texto e obrigatória.
-    autor TEXT NOT NULL, // Define a coluna "autor" como tipo texto e obrigatória.
-    ano_publicacao INTEGER NOT NULL, // Define a coluna "ano_publicacao" como tipo inteiro e obrigatória.
-    genero TEXT, // Define a coluna "genero" como tipo texto (opcional).
-    paginas INTEGER NOT NULL, // Define a coluna "paginas" como tipo inteiro e obrigatória.
-    data_cadastro TEXT DEFAULT CURRENT_TIMESTAMP, // Define a coluna "data_cadastro" como tipo texto, com valor padrão sendo o timestamp atual.
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    autor TEXT NOT NULL, 
+    ano_publicacao INTEGER NOT NULL, 
+    genero TEXT, 
+    paginas INTEGER NOT NULL, 
+    data_cadastro TEXT DEFAULT CURRENT_TIMESTAMP,
     avaliacao FLOAT)`, // Define a coluna "avaliacao" como tipo float (opcional).
     (err) => {
         if (err) {
